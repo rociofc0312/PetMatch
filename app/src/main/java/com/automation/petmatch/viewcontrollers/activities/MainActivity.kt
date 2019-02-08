@@ -1,7 +1,8 @@
-package com.automation.petmatch
+package com.automation.petmatch.viewcontrollers.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.automation.petmatch.R
 
 class MainActivity : AppCompatActivity() {
 

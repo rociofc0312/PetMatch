@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "1022322040822",
-    "firebase_url": "https://petmatch-app.firebaseio.com",
-    "project_id": "petmatch-app",
-    "storage_bucket": "petmatch-app.appspot.com"
+    "project_number": "617061061862",
+    "firebase_url": "https://petmatch-89822.firebaseio.com",
+    "project_id": "petmatch-89822",
+    "storage_bucket": "petmatch-89822.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1022322040822:android:c3e7ef4a190376a1",
+        "mobilesdk_app_id": "1:617061061862:android:c3e7ef4a190376a1",
         "android_client_info": {
           "package_name": "com.automation.petmatch"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1022322040822-81mmraln3pj0n8ds4g0fbnujntqj2e7l.apps.googleusercontent.com",
+          "client_id": "617061061862-ong3o1a7aafmccj8vd5qp5v505469mlo.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.automation.petmatch",
@@ -23,13 +23,13 @@
           }
         },
         {
-          "client_id": "1022322040822-78oigmksguffbkg8b12teel7v7kvtk70.apps.googleusercontent.com",
+          "client_id": "617061061862-hb2s4tl24du1acm5p0hmvgdomunlt153.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBJZEH2zlUFvAndkV1_mvwIzPDqQ0ssl4Y"
+          "current_key": "AIzaSyC5F2okv4mE82gmsE1M6_UADa9k-M7rKpo"
         }
       ],
       "services": {
@@ -40,8 +40,15 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "1022322040822-78oigmksguffbkg8b12teel7v7kvtk70.apps.googleusercontent.com",
+              "client_id": "617061061862-c0tli62h2idnm919slqqdbjmrjm7vl66.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "617061061862-2ulk83psl60bbm437lui373u43ri82mu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.belatrix.PetMatch"
+              }
             }
           ]
         },
