@@ -13,7 +13,25 @@
     <string name="create_account_text">Create account</string>
     <string name="database_reference">https://petmatch-89822.firebaseio.com/</string>
     <string name="web_client_id">617061061862-c0tli62h2idnm919slqqdbjmrjm7vl66.apps.googleusercontent.com</string>
-    <string name="invalid_email">com.google.firebase.auth.FirebaseAuthInvalidCredentialsException: The email address is badly formatted.</string>
-    <string name="weak_password">com.google.firebase.auth.FirebaseAuthWeakPasswordException: The given password is invalid. [ Password should be at least 6 characters ]</string>
-    <string name="already_registered">com.google.firebase.auth.FirebaseAuthUserCollisionException: The email address is already in use by another account.</string>
+    <string name="invalid_email">com.google.firebase.auth.FirebaseAuthInvalidCredentialsException: The email address is
+        badly formatted.
+    </string>
+    <string name="weak_password">com.google.firebase.auth.FirebaseAuthWeakPasswordException: The given password is
+        invalid. [ Password should be at least 6 characters ]
+    </string>
+    <string name="already_registered">com.google.firebase.auth.FirebaseAuthUserCollisionException: The email address is
+        already in use by another account.
+    </string>
+    <string name="pets_text">Pets</string>
+    <string name="user_text">User</string>
+    <string name="favorites_text">Favorites</string>
+    <string name="create_pet_title">Register your pet</string>
+    <string name="create_pet_subtitle">And enjoy finding a match for it</string>
+    <string name="pet_name_text">Name</string>
+    <string name="create_pet_button_text">Create Pet</string>
+    <string name="picture_text">Select a picture</string>
+    <string name="choose_text">Choose</string>
+    <string name="genre_text">Genre</string>
+    <string name="type_text">Type</string>
+    <string name="about_text">Describe your pet</string>
 </resources>
