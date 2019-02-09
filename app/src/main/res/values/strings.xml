@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">PetMatch</string>
+    <string name="petmatch_text">PetMatch</string>
+    <string name="email_text">Email</string>
+    <string name="password_text">Password</string>
+    <string name="signin_text">Sign In</string>
+    <string name="or_text">OR</string>
+    <string name="google_text">Sign In With google</string>
+    <string name="register_message_text">Don\'t have an account? Register</string>
+    <string name="name_text">Name</string>
+    <string name="lastname_text">Lastname</string>
+    <string name="confirm_password_text">Confirm password</string>
+    <string name="create_account_text">Create account</string>
+    <string name="database_reference">https://petmatch-89822.firebaseio.com/</string>
+    <string name="web_client_id">617061061862-c0tli62h2idnm919slqqdbjmrjm7vl66.apps.googleusercontent.com</string>
+    <string name="invalid_email">com.google.firebase.auth.FirebaseAuthInvalidCredentialsException: The email address is badly formatted.</string>
+    <string name="weak_password">com.google.firebase.auth.FirebaseAuthWeakPasswordException: The given password is invalid. [ Password should be at least 6 characters ]</string>
+    <string name="already_registered">com.google.firebase.auth.FirebaseAuthUserCollisionException: The email address is already in use by another account.</string>
 </resources>
