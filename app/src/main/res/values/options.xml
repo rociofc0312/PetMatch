@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="spinner_genre">
-        <item>Select</item>
+        <item>Select a gender</item>
         <item>Male</item>
         <item>Female</item>
     </string-array>
 
     <string-array name="spinner_type">
-        <item>Select</item>
+        <item>Select a type</item>
         <item>Dog</item>
         <item>Cat</item>
         <item>Hamster</item>

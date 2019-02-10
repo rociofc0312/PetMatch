@@ -21,12 +21,8 @@ import kotlinx.android.synthetic.main.content_create_pet.*
 import java.io.File
 import com.google.firebase.storage.UploadTask
 import com.google.firebase.storage.OnProgressListener
-import android.support.annotation.NonNull
 import android.util.Log
 import com.google.android.gms.tasks.OnFailureListener
-import com.google.android.gms.tasks.OnSuccessListener
-
-
 
 class CreatePetActivity : AppCompatActivity() {
 
@@ -47,8 +43,8 @@ class CreatePetActivity : AppCompatActivity() {
         mStorage = FirebaseStorage.getInstance()
 
         progress_bar.visibility = View.GONE
-        val genreAdapter = ArrayAdapter.createFromResource(this, R.array.spinner_genre, android.R.layout.simple_spinner_item)
-        val typeAdapter = ArrayAdapter.createFromResource(this, R.array.spinner_type, android.R.layout.simple_spinner_item)
+        val genreAdapter = ArrayAdapter.createFromResource(this, R.array.spinner_genre, R.layout.custom_spinner)
+        val typeAdapter = ArrayAdapter.createFromResource(this, R.array.spinner_type, R.layout.custom_spinner)
         genreAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         genreSpinner.adapter = genreAdapter
@@ -161,10 +157,7 @@ class CreatePetActivity : AppCompatActivity() {
         var uploadTask = riversRef.putFile(file)
 
         uploadTask.addOnSuccessListener{
-            val storageUrl = riversRef.downloadUrl.toString()
             progress_bar.visibility = View.GONE
-            //Toast.makeText(this@CreatePetActivity, "Uploaded image and saved pet.", Toast.LENGTH_SHORT).show()
-
             riversRef.downloadUrl.addOnSuccessListener {
                 Log.d("Create pet", "Location: $it")
                 createPet("$it")
@@ -175,9 +168,7 @@ class CreatePetActivity : AppCompatActivity() {
             buttonChoose.isEnabled = true
             saveButton.isEnabled = true
             Toast.makeText(this@CreatePetActivity, "Failed " + e.message, Toast.LENGTH_SHORT).show()
-        }).addOnProgressListener(OnProgressListener<UploadTask.TaskSnapshot> { taskSnapshot ->
-                val progress = 100.0 * taskSnapshot.bytesTransferred / taskSnapshot.totalByteCount
-                //progressDialog.setMessage("Uploaded " + progress.toInt() + "%")
+        }).addOnProgressListener(OnProgressListener<UploadTask.TaskSnapshot> {
         })
     }
 }
