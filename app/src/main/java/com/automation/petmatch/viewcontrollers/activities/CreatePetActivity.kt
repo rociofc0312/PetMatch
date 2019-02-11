@@ -1,6 +1,7 @@
 package com.automation.petmatch.viewcontrollers.activities
 
 import android.Manifest
+import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -22,13 +23,17 @@ import java.io.File
 import com.google.firebase.storage.UploadTask
 import com.google.firebase.storage.OnProgressListener
 import android.util.Log
+import com.automation.petmatch.model.Pet
 import com.google.android.gms.tasks.OnFailureListener
+import kotlinx.android.synthetic.main.item_pet.*
 
 class CreatePetActivity : AppCompatActivity() {
 
     private val PICK_IMAGE_REQUEST = 1
     private val STORAGE_PERMISSION_CODE = 123
     private lateinit var filePath: Uri
+
+    private lateinit var petId: String
 
     private lateinit var mStorage: FirebaseStorage
     private lateinit var mAuth: FirebaseAuth
@@ -41,6 +46,7 @@ class CreatePetActivity : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
         mDataBase = FirebaseDatabase.getInstance().getReferenceFromUrl(getString(R.string.database_reference))
         mStorage = FirebaseStorage.getInstance()
+
 
         progress_bar.visibility = View.GONE
         val genreAdapter = ArrayAdapter.createFromResource(this, R.array.spinner_genre, R.layout.custom_spinner)
@@ -59,6 +65,26 @@ class CreatePetActivity : AppCompatActivity() {
         buttonChoose.setOnClickListener {
             showFileChooser()
         }
+
+
+        val intent = intent?: return
+        petId =""
+        if (intent.extras!=null) {
+            val pet = Pet.from(intent.extras!!)
+            val genreSpinnerPosition = genreAdapter.getPosition(pet.Genre)
+            val typeSpinnerPosition = typeAdapter.getPosition(pet.Type)
+
+            petId = pet.Name + pet.Owner
+            nameEditText.setText(pet.Name)
+            genreSpinner.setSelection(genreSpinnerPosition)
+            typeSpinner.setSelection(typeSpinnerPosition)
+            aboutEditText.setText(pet.About)
+            birthDateEditText.setText(pet.Birthdate)
+            imageNameEditText.setText(pet.Photo)
+
+            //mDataBase.child("Pets").child(petId)
+        }
+
     }
 
     private fun createPet(webpath: String) {
@@ -72,7 +98,8 @@ class CreatePetActivity : AppCompatActivity() {
             startActivity(Intent(this@CreatePetActivity, MainActivity::class.java))
             val user = mAuth.currentUser
             val owner = user!!.uid
-            val petId = name + owner
+            if(petId == ""){
+                petId = name + owner }
             mDataBase.child("Pets").child(petId).child("Owner").setValue(owner)
             mDataBase.child("Pets").child(petId).child("Name").setValue(name)
             mDataBase.child("Pets").child(petId).child("About").setValue(about)
@@ -80,7 +107,22 @@ class CreatePetActivity : AppCompatActivity() {
             mDataBase.child("Pets").child(petId).child("Type").setValue(type)
             mDataBase.child("Pets").child(petId).child("Birthdate").setValue(birthDate)
             mDataBase.child("Pets").child(petId).child("Photo").setValue(webpath)
+
         }
+    }
+
+    private fun updatePet(pet: Pet){
+
+        /*val user = mAuth.currentUser
+        val owner = user!!.uid
+        val contentValue = ContentValues()
+
+        val intent = intent?:return
+        val pet = Pet.from(intent.extras!!)
+        val name = nameEditText.text.toString()*/
+
+
+
     }
 
     private fun showFileChooser() {

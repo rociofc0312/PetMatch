@@ -12,7 +12,9 @@ import android.view.ViewGroup
 import com.automation.petmatch.R
 import com.automation.petmatch.model.Pet
 import com.automation.petmatch.viewcontrollers.adapters.PetsAdapter
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.content_create_pet.*
 import kotlinx.android.synthetic.main.fragment_pets.view.*
 
 class UserFragment : Fragment() {
@@ -23,6 +25,7 @@ class UserFragment : Fragment() {
     private lateinit var petsOwnerRecyclerView: RecyclerView
     private lateinit var petsAdapter: PetsAdapter
     private lateinit var petsLayoutManager: RecyclerView.LayoutManager
+    private lateinit var mAuth: FirebaseAuth
 
     private lateinit var pets: MutableList<Pet>
 
@@ -33,16 +36,20 @@ class UserFragment : Fragment() {
         pets = mutableListOf()
         mDatabase = FirebaseDatabase.getInstance()
         mDatabaseReference = mDatabase.getReference("Pets")
+        mAuth = FirebaseAuth.getInstance()
+
+        val user = mAuth.currentUser
+        val owner = user!!.uid
+        val petOwner = mDatabaseReference.orderByChild("Owner").equalTo(owner)
 
         petsOwnerRecyclerView = view.petsRecyclerView
-        petsAdapter = PetsAdapter(pets, view.context)
+        petsAdapter = PetsAdapter(true,pets, view.context)
+
         petsLayoutManager = GridLayoutManager(view.context, 1, GridLayoutManager.VERTICAL, false) as RecyclerView.LayoutManager
-
-
         petsOwnerRecyclerView.adapter = petsAdapter
         petsOwnerRecyclerView.layoutManager = petsLayoutManager
 
-        mDatabaseReference.addValueEventListener(object: ValueEventListener {
+        petOwner.addValueEventListener(object: ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
@@ -50,8 +57,8 @@ class UserFragment : Fragment() {
             override fun onDataChange(p0: DataSnapshot) {
                 if(p0.exists()){
                     for (h in p0.children){
-                        val pet = h.getValue(Pet::class.java)
-                        pets.add(pet!!)
+                            val pet = h.getValue(Pet::class.java)
+                            pets.add(pet!!)
                     }
                     petsAdapter.pets = pets
                     petsAdapter.notifyDataSetChanged()
