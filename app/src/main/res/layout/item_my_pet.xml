@@ -1,7 +1,7 @@
 <android.support.v7.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="120dp"
         android:id="@+id/petLayout"
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -11,36 +11,26 @@
 
         <com.androidnetworking.widget.ANImageView
                 android:id="@+id/petImageView"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/ic_launcher"
+                app:layout_constraintWidth_percent="0.2"
                 android:layout_margin="@dimen/padding_16"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-        <ImageView
-                android:id="@+id/deleteImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:background="@color/colorIcons"
-                android:src="@drawable/ic_delete_primary_24dp"
-                android:layout_margin="@dimen/margin_16"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+        />
 
         <android.support.constraint.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:id="@+id/eventInfoContent"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:id="@+id/petContent"
                 android:layout_margin="@dimen/margin_16"
-                app:layout_constraintTop_toBottomOf="@id/petImageView"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@id/petImageView"
                 app:layout_constraintEnd_toEndOf="parent">
-
             <TextView
                     android:id="@+id/nameTextView"
                     android:layout_width="@dimen/size_0"
@@ -61,7 +51,8 @@
                     android:layout_width="@dimen/size_0"
                     android:layout_height="@dimen/size_0"
                     android:gravity="center_vertical"
-                    app:layout_constraintWidth_percent="0.08"
+                    android:src="@drawable/ic_male"
+                    app:layout_constraintWidth_percent="0.1"
                     app:layout_constraintStart_toEndOf="@id/nameTextView"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -74,15 +65,28 @@
                     android:text="@string/mock_text"
                     android:textSize="@dimen/text_size_14"
                     android:gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/margin_8"
                     android:fontFamily="@font/questrial"
                     android:textColor="@color/colorPrimaryText"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/deleteImageView"
                     app:layout_constraintTop_toBottomOf="@id/nameTextView"
                     app:layout_constraintBottom_toBottomOf="parent"/>
 
+            <ImageView
+                    android:id="@+id/deleteImageView"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="@dimen/size_0"
+                    android:gravity="center_vertical"
+                    android:src="@drawable/ic_delete_dark_24dp"
+                    app:layout_constraintWidth_percent="0.1"
+                    app:layout_constraintStart_toEndOf="@id/birthTextview"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/genderImageView"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
 
         </android.support.constraint.ConstraintLayout>
+
     </android.support.constraint.ConstraintLayout>
 
 </android.support.v7.widget.CardView>
