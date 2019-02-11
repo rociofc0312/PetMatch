@@ -35,7 +35,7 @@ class PetsFragment : Fragment() {
         mDatabaseReference = mDatabase.getReference("Pets")
 
         petsRecyclerView = view.petsRecyclerView
-        petsAdapter = PetsAdapter(pets, view.context)
+        petsAdapter = PetsAdapter(false,pets, view.context)
         petsLayoutManager = GridLayoutManager(view.context, 1, GridLayoutManager.HORIZONTAL, false) as RecyclerView.LayoutManager
             //LinearLayoutManager(view.context, LinearLayoutManager.HORIZONTAL, false)
 

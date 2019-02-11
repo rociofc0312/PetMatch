@@ -1,18 +1,26 @@
 package com.automation.petmatch.viewcontrollers.adapters
 
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
+import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
+import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.RecyclerView
+import android.view.FrameMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.automation.petmatch.R
 import com.automation.petmatch.model.Pet
+import com.automation.petmatch.viewcontrollers.activities.CreatePetActivity
+import com.automation.petmatch.viewcontrollers.activities.RegisterActivity
 import kotlinx.android.synthetic.main.item_pet.view.*
 
 
 
 
-class PetsAdapter(var pets: List<Pet>, val context: Context): RecyclerView.Adapter<PetsAdapter.ViewHolder>(){
+class PetsAdapter(var data: Boolean, var pets: List<Pet>, val context: Context): RecyclerView.Adapter<PetsAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         val inflator = LayoutInflater.from(context).inflate(R.layout.item_pet, p0, false)
@@ -56,8 +64,12 @@ class PetsAdapter(var pets: List<Pet>, val context: Context): RecyclerView.Adapt
                 }
             )
 
-            petLayout.setOnClickListener{
-
+            petLayout.setOnClickListener{view ->
+                val context = view.context
+                if (data)
+                context.startActivity(
+                        Intent(context, CreatePetActivity::class.java)
+                                .putExtras(pet.toBundle()))
             }
         }
     }

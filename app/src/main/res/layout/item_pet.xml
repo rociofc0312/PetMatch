@@ -7,7 +7,7 @@
 
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
         <com.androidnetworking.widget.ANImageView
                 android:id="@+id/petImageView"
@@ -18,7 +18,7 @@
                 android:layout_margin="@dimen/padding_16"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
         <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
