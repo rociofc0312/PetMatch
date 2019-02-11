@@ -1,7 +1,6 @@
 package com.automation.petmatch.viewcontrollers.activities
 
 import android.Manifest
-import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -25,7 +24,6 @@ import com.google.firebase.storage.OnProgressListener
 import android.util.Log
 import com.automation.petmatch.model.Pet
 import com.google.android.gms.tasks.OnFailureListener
-import kotlinx.android.synthetic.main.item_pet.*
 
 class CreatePetActivity : AppCompatActivity() {
 
@@ -109,20 +107,6 @@ class CreatePetActivity : AppCompatActivity() {
             mDataBase.child("Pets").child(petId).child("Photo").setValue(webpath)
 
         }
-    }
-
-    private fun updatePet(pet: Pet){
-
-        /*val user = mAuth.currentUser
-        val owner = user!!.uid
-        val contentValue = ContentValues()
-
-        val intent = intent?:return
-        val pet = Pet.from(intent.extras!!)
-        val name = nameEditText.text.toString()*/
-
-
-
     }
 
     private fun showFileChooser() {

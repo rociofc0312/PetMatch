@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.content_create_pet.*
 import kotlinx.android.synthetic.main.fragment_pets.view.*
+import kotlinx.android.synthetic.main.item_pet.view.*
 
 class UserFragment : Fragment() {
 

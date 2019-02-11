@@ -14,6 +14,7 @@ import com.automation.petmatch.model.Pet
 import com.automation.petmatch.viewcontrollers.adapters.PetsAdapter
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_pets.view.*
+import kotlinx.android.synthetic.main.item_pet.view.*
 
 class PetsFragment : Fragment() {
 
@@ -29,6 +30,7 @@ class PetsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_pets, container, false)
+        //view.deleteImageView.visibility = View.INVISIBLE
 
         pets = mutableListOf()
         mDatabase = FirebaseDatabase.getInstance()
