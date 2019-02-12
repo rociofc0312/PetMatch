@@ -67,7 +67,6 @@ class UserFragment : Fragment() {
             }
         })
 
-
         return view
     }
 }
