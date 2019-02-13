@@ -50,20 +50,13 @@ class PetsAdapter(var data: Boolean, var pets: List<Pet>, val context: Context):
         p0.updateFrom(pet)
     }
 
-    private fun deletePetFromUser() {
+    private fun deletePetFromUser(id: String) {
 
         mDatabase = FirebaseDatabase.getInstance()
         mDatabaseReference = mDatabase.getReference("Pets")
-        mAuth = FirebaseAuth.getInstance()
 
-        val user = mAuth.currentUser
-        val owner = user!!.uid
+        mDatabaseReference.child(id).removeValue()
 
-        val petId = owner
-
-
-
-        mDatabaseReference.child(petId).removeValue()
 
     }
 
@@ -79,6 +72,8 @@ class PetsAdapter(var data: Boolean, var pets: List<Pet>, val context: Context):
             petImageView.setDefaultImageResId(R.mipmap.ic_launcher)
             petImageView.setErrorImageResId(R.mipmap.ic_launcher)
             petImageView.setImageUrl(pet.Photo)
+
+            val petID = pet.Name + pet.Owner
 
             nameTextView.text = pet.Name
             birthdateTextView.text = pet.Birthdate
@@ -104,8 +99,7 @@ class PetsAdapter(var data: Boolean, var pets: List<Pet>, val context: Context):
                     )
                 }
                 deleteImageView.setOnClickListener {view ->
-
-                    deletePetFromUser()
+                    deletePetFromUser(petID)
                     //Toast.makeText(view.context, "Wrong username or password", Toast.LENGTH_SHORT).show()
                 }
             }
