@@ -24,6 +24,7 @@ import com.google.firebase.storage.OnProgressListener
 import android.util.Log
 import com.automation.petmatch.model.Pet
 import com.google.android.gms.tasks.OnFailureListener
+import kotlinx.android.synthetic.main.item_my_pet.*
 
 class CreatePetActivity : AppCompatActivity() {
 

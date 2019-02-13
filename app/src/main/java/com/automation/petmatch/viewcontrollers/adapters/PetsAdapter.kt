@@ -6,16 +6,27 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.automation.petmatch.R
 import com.automation.petmatch.model.Pet
 import com.automation.petmatch.viewcontrollers.activities.CreatePetActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.item_pet.view.*
 
 
 class PetsAdapter(var data: Boolean, var pets: List<Pet>, val context: Context): RecyclerView.Adapter<PetsAdapter.ViewHolder>(){
 
     private var itemInflate = R.layout.item_pet
+
+
+    lateinit var mDatabase: FirebaseDatabase
+    lateinit var mDatabaseReference: DatabaseReference
+
+    private lateinit var petsOwnerRecyclerView: RecyclerView
+    private lateinit var petsAdapter: PetsAdapter
+    private lateinit var petsLayoutManager: RecyclerView.LayoutManager
+    private lateinit var mAuth: FirebaseAuth
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         /*if(data){
@@ -39,6 +50,15 @@ class PetsAdapter(var data: Boolean, var pets: List<Pet>, val context: Context):
         p0.updateFrom(pet)
     }
 
+    private fun deletePetFromUser(id: String) {
+
+        mDatabase = FirebaseDatabase.getInstance()
+        mDatabaseReference = mDatabase.getReference("Pets")
+
+        mDatabaseReference.child(id).removeValue()
+
+
+    }
 
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view){
         val petLayout = view.petLayout
@@ -52,6 +72,8 @@ class PetsAdapter(var data: Boolean, var pets: List<Pet>, val context: Context):
             petImageView.setDefaultImageResId(R.mipmap.ic_launcher)
             petImageView.setErrorImageResId(R.mipmap.ic_launcher)
             petImageView.setImageUrl(pet.Photo)
+
+            val petID = pet.Name + pet.Owner
 
             nameTextView.text = pet.Name
             birthdateTextView.text = pet.Birthdate
@@ -77,9 +99,11 @@ class PetsAdapter(var data: Boolean, var pets: List<Pet>, val context: Context):
                     )
                 }
                 deleteImageView.setOnClickListener {view ->
-                    Toast.makeText(view.context, "Wrong username or password", Toast.LENGTH_SHORT).show()
+                    deletePetFromUser(petID)
+                    //Toast.makeText(view.context, "Wrong username or password", Toast.LENGTH_SHORT).show()
                 }
             }
         }
+
     }
 }
